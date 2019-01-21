@@ -10,6 +10,7 @@ Game = {
   slots: [],
   mouseX: 0,
   mouseY: 0,
+  towers,
 
   start: function(){
     this.canvas = document.getElementById("canvas")
@@ -29,7 +30,6 @@ Game = {
       }.bind(this))
     })
     this.Field = new Field(this)
-    this.Tower = new Tower(this)
     this.Interface = new Interface(this)
     this.Field.render()
     this.foes.push(new Foe(this))
@@ -39,6 +39,7 @@ Game = {
 
       this.clearScr()
       this.Field.render()
+      
       this.Tower.render()
       this.Tower.shoot()
       
