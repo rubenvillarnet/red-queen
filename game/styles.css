@@ -1,0 +1,51 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-color: #ccc;
+}
+
+#game-container{
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+}
+
+#gui{
+  width: 1024px;
+  height: 128px;
+  background-color: green;
+  position: relative;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#blue-tower-button{
+  margin-left: 32px;
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+}
+
+#blue-tower-button .button{
+  width: 64px;
+  height: 64px;
+  background-color: #0400FF;
+  
+}
+
+#blue-tower-button .text li{
+  list-style: none;
+  color: #fff;
+}
+
+
+#right-info{
+  text-align: right;
+  color: #fff;
+  font-size: 20px;
+  margin-right: 32px;
+}

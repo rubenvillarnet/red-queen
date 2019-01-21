@@ -7,15 +7,38 @@
   <title>Red Queen</title>
   <link rel="stylesheet" href="styles.css">
   <script type="text/javascript" src="js/palette.js"></script>
+  <script type="text/javascript" src="js/slots.js"></script>
+  <script type="text/javascript" src="js/bullets.js"></script>
   <script type="text/javascript" src="js/field.js"></script>
   <script type="text/javascript" src="js/foe.js"></script>
   <script type="text/javascript" src="js/tower.js"></script>
+  <script type="text/javascript" src="js/interface.js"></script>
   <script type="text/javascript" src="js/game.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
   <div id="game-container">
-    <canvas id="canvas" width="1024px" height="768px"></canvas>
-  </div>
+    <canvas id="canvas" width="1024px" height="640px"></canvas>
+    <div id="gui">
+      <div id="tower-buttons">
+        <div id="blue-tower-button">
+          <div class="button">
+          </div>
+          <div class="text">
+              <ul>
+                <li>$50</li>
+                <li>Range: 10</li>
+                <li>Damage: 5</li>
+              </ul>
+            </div>
+        </div>
+      </div>
+      <div id="right-info">
+        <p>$: <span id="money"></span></p>
+        <p>Health: <span id="health"></span></p>
+      </div>
+      
+    </div>
+      </div>
 </body>
 </html>
