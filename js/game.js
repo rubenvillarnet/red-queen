@@ -10,7 +10,7 @@ Game = {
   slots: [],
   mouseX: 0,
   mouseY: 0,
-  towers,
+  towers: [],
 
   start: function(){
     this.canvas = document.getElementById("canvas")
@@ -33,6 +33,7 @@ Game = {
     this.Interface = new Interface(this)
     this.Field.render()
     this.foes.push(new Foe(this))
+    this.Tower = new Tower(this)
 
     this.intervalID = setInterval(function(){
       this.frames++
