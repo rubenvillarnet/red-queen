@@ -16,58 +16,60 @@ Game = {
     this.canvas = document.getElementById("canvas")
     this.ctx = this.canvas.getContext("2d")
     this.fps = 60
-    this.health = 100
+    this.health = 10
     this.money = 100
 
     this.fillSlots()
-    this.canvas.addEventListener('click', (e) => {
-      this.mouseClick = [e.clientX, e.clientY]
-      this.slots.forEach(function(slot, index){
-        if(this.mouseClick[0] >= slot.x && this.mouseClick[0] < slot.x + slot.w &&
-          this.mouseClick[1] >= slot.y && this.mouseClick[1] < slot.y + slot.h){
-            console.log(index)
-          }
-      }.bind(this))
-    })
+    interactions.canvasClick(this)
+    interactions.interfaceClick(this)
     this.Field = new Field(this)
     this.Interface = new Interface(this)
     this.Field.render()
     this.foes.push(new Foe(this))
-    this.Tower = new Tower(this)
 
     this.intervalID = setInterval(function(){
       this.frames++
 
+      interactions.checkButton()
+
       this.clearScr()
       this.Field.render()
+      this.slots.forEach(function(slot){
+        if(slot.tower != undefined){
+          slot.tower.render()
+          slot.tower.shoot()
+        }
+      })
       
-      this.Tower.render()
-      this.Tower.shoot()
-      
-      this.Interface.health()
-      this.Interface.money()
+      this.slots.forEach(function(slot){
+        slot.drawZone()
+      })
+      this.Interface.render()
 
-      this.foes.forEach(foe => {
-        foe.render()
-        foe.move()
-      });
+      
 
       this.checkBullets()
       this.bullets.forEach(bullet => {
         bullet.render()
       })
 
+      this.foes.forEach(foe => {
+        foe.render()
+        foe.move()
+      });
       
 
       this.checkHealth()
       this.clearFoes()
+      this.checkGameOver()
 
       if(this.frames > 899) this.frames = 0
 
-      if(this.frames % 300 === 0)
+      if(this.frames % 230 === 0)
       {
         this.foes.push(new Foe(this))
       }
+
     }.bind(this), 1000 / this.fps)
   },
 
@@ -76,11 +78,14 @@ Game = {
   },
 
   clearFoes: function () {
-    lengthBefore = this.foes.length
+    this.foes.forEach(function(foe){
+      if(foe.health <= 0){
+        this.money += foe.money
+      }
+    }.bind(this))
     this.foes = this.foes.filter(function (foe) {
       return foe.x > 0 && foe.health > 0 ;
     });
-    this.money += 10 * (lengthBefore - this.foes.length)
   },
 
   checkHealth: function(){
@@ -98,6 +103,13 @@ Game = {
   fillSlots: function(){
     for(var i = 0; i < 640; i += 64){
       this.slots.push(new Slot(this, i))
+    }
+  },
+
+  checkGameOver: function(){
+    if(this.health <= 0){
+      clearInterval(this.intervalID)
+      console.log("surprise mudafacka")
     }
   }
 }

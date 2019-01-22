@@ -7,6 +7,7 @@ function Foe(game){
   this.x = this.game.canvas.width - this.w
   this.y = Math.floor((Math.random() * (this.game.Field.h - this.h )))
   this.health = 10
+  this.money = 10
   this.maxHealth = this.health
 }
 

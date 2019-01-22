@@ -13,6 +13,7 @@
   <script type="text/javascript" src="js/foe.js"></script>
   <script type="text/javascript" src="js/tower.js"></script>
   <script type="text/javascript" src="js/interface.js"></script>
+  <script type="text/javascript" src="js/interactions.js"></script>
   <script type="text/javascript" src="js/game.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
 </head>
@@ -22,15 +23,27 @@
     <div id="gui">
       <div id="tower-buttons">
         <div id="blue-tower-button">
-          <div class="button">
+          <div class="new-tower">
+              <div class="button">
+                </div>
+                <div class="text">
+                    <ul>
+                      <li>$50</li>
+                      <li>Range: 10</li>
+                      <li>Damage: 5</li>
+                    </ul>
+                  </div>
           </div>
-          <div class="text">
-              <ul>
-                <li>$50</li>
-                <li>Range: 10</li>
-                <li>Damage: 5</li>
-              </ul>
-            </div>
+          <div class="upgrade-tower hidden">
+            <p>Upgrade tower</p>
+            <ul>
+              <li>Next level: <span id="next-level"></span></li>
+              <li>Damage: +<span id="nxt-lvl-damage"></span></li>
+              <li>Range: +<span id="ntxt-lvl-range" ></span></li>
+              <li><span id="nxt-lvl-cost"></span>$</li>
+            </ul>
+          </div>
+          
         </div>
       </div>
       <div id="right-info">

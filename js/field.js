@@ -18,7 +18,7 @@ Field.prototype.slots = function(){
   for(var i = 16; i <= 608; i+=64){
     ctx.fillStyle = "rgba(4, 0, 255, 0.1"
     ctx.strokeStyle = "#0400FF"
-    ctx.strokeRect(32, i , 32, 32)
-    ctx.fillRect(32, i , 32, 32)
+    ctx.strokeRect(16, i , 32, 32)
+    ctx.fillRect(16, i , 32, 32)
   }
 }

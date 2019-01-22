@@ -4,6 +4,7 @@ body{
   background-color: #ccc;
 }
 
+
 #game-container{
   display: flex;
   flex-flow: wrap;
@@ -21,7 +22,7 @@ body{
   align-items: center;
 }
 
-#blue-tower-button{
+.new-tower{
   margin-left: 32px;
   display: flex;
   flex-flow: wrap;
@@ -49,3 +50,21 @@ body{
   font-size: 20px;
   margin-right: 32px;
 }
+
+#blue-tower-button .upgrade-tower{
+  text-align: left;
+  color: #fff;
+  font-size: 16px;
+  margin-left: 32px;
+}
+#blue-tower-button .upgrade-tower ul{
+  padding: 0;
+}
+#blue-tower-button .upgrade-tower li{
+  list-style: none;
+}
+
+.hidden{
+  display: none;
+}
+

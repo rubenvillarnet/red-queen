@@ -1,8 +1,33 @@
 function Interface(game){
   this.game = game
   this.healthDOM = document.getElementById("health")
-  
   this.moneyDOM = document.getElementById("money")
+  this.levelDom = document.getElementById("next-level")
+  this.damageDOM = document.getElementById("nxt-lvl-damage")
+  this.rangeDOM = document.getElementById("ntxt-lvl-range")
+  this.priceDOM = document.getElementById("nxt-lvl-cost")
+
+  this.level = 1
+  this.levelInfo = ["","","", ""]
+  
+}
+
+Interface.prototype.render = function(){
+    this.health()
+    this.money()
+    this.nextRange()
+
+    if(this.level === 4){
+      this.levelDom.innerHTML = "MAX"
+      this.damageDOM.innerHTML = "-"
+      this.priceDOM.innerHTML =  "-"
+
+    }else{
+      this.nextLevel()
+      this.nextDamage()
+      this.nextPrice()
+    }
+  
 }
 
 Interface.prototype.health = function(){
@@ -14,3 +39,24 @@ Interface.prototype.money = function(){
   ctx = this.game.ctx
   this.moneyDOM.innerHTML = this.game.money
 }
+
+Interface.prototype.nextLevel = function(){
+  ctx = this.game.ctx
+  this.levelDom.innerHTML = this.level +1
+}
+
+Interface.prototype.nextDamage = function(){
+  ctx = this.game.ctx
+  this.damageDOM.innerHTML = this.levelInfo[2]
+}
+
+Interface.prototype.nextRange = function(){
+  ctx = this.game.ctx
+  this.rangeDOM.innerHTML = "-"
+}
+
+Interface.prototype.nextPrice = function(){
+  ctx = this.game.ctx
+  this.priceDOM.innerHTML = this.levelInfo[1]
+}
+
