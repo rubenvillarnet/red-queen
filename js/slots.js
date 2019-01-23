@@ -1,7 +1,7 @@
 function Slot(game, y){
   this.game = game
-  this.w = 64
-  this.h =64
+  this.w = Settings.slot.w
+  this.h = Settings.slot.h
   this.x = 0
   this.y = y
   this.tower = undefined

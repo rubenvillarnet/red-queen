@@ -1,4 +1,4 @@
-Game = {
+var Game = {
   canvas: undefined,
   ctx: undefined,
   frames: 0,
@@ -8,16 +8,14 @@ Game = {
   foes: [],
   bullets: [],
   slots: [],
-  mouseX: 0,
-  mouseY: 0,
   towers: [],
 
   start: function(){
-    this.canvas = document.getElementById("canvas")
+    this.canvas = document.getElementById(Settings.game.canvasID)
     this.ctx = this.canvas.getContext("2d")
-    this.fps = 60
-    this.health = 10
-    this.money = 100
+    this.fps = Settings.game.fps
+    this.health = Settings.game.health
+    this.money = Settings.game.money
 
     this.fillSlots()
     interactions.canvasClick(this)

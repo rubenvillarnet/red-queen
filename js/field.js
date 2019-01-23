@@ -1,8 +1,8 @@
 function Field(game){
   this.game = game
-  this.w = 1024
-  this.h = 640
-  this.color = "#222"
+  this.w = Settings.field.w
+  this.h = Settings.field.h
+  this.color = Settings.field.color
 
 }
 

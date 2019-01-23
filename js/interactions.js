@@ -27,7 +27,7 @@ var interactions = {
               }
             }else{ //si sí que tiene torre
               if(this.buttonClicked === false){
-                this.towerSelected = index //seleccionamos esa torre
+                this.towerSelected = index 
                 this.buttonClicked = false
                 this.buttonIsNewTower = false
                 game.Interface.level = game.slots[index].level

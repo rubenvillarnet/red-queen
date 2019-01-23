@@ -1,21 +1,22 @@
 function Tower(game,argY){
   this.game = game
-  this.w = 32
-  this.h = 32
-  this.x = 16
+  this.w = Settings.tower.w
+  this.h = Settings.tower.h
+  this.x = Settings.tower.x
   this.y = argY
-  this.color = "#0400FF"
-  this.textColor = "#FFF"
-  this.damage = 1
-  this.range = 0
-  this.fireRate = 60
-  this.price = 50
+  this.color = Settings.tower.color
+  this.textColor = Settings.tower.textColor
+  this.damage = Settings.tower.damage
+  this.range = Settings.tower.range
+  this.fireRate = Settings.tower.fireRate
+  this.price = Settings.tower.price
   this.level = 1
-  this.levels = [
-    [0.3, 30, "30%", 2],
-    [0.3, 30, "30%", 3],
-    [0.3, 30, "30%", 4]
-]
+  this.levels = Settings.tower.levels
+  this.bullets = {
+    color: Settings.tower.bullets.color,
+    width: Settings.tower.bullets.width,
+    duration: Settings.tower.bullets.duration
+  }
 }
 
 Tower.prototype.render = function(){
@@ -37,10 +38,9 @@ Tower.prototype.shoot = function(){
         this.y + this.h / 2,
         this.game.foes[0].x,
         this.game.foes[0].y + this.game.foes[0].h /2,
-        "#ffffff",
-        2,
-        30,
-        this.fireRate
+        this.bullets.color,
+        this.bullets.width,
+        this.bullets.duration,
         ))
   }
   

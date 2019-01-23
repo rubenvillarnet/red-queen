@@ -1,11 +1,11 @@
 function Interface(game){
   this.game = game
-  this.healthDOM = document.getElementById("health")
-  this.moneyDOM = document.getElementById("money")
-  this.levelDom = document.getElementById("next-level")
-  this.damageDOM = document.getElementById("nxt-lvl-damage")
-  this.rangeDOM = document.getElementById("ntxt-lvl-range")
-  this.priceDOM = document.getElementById("nxt-lvl-cost")
+  this.healthDOM = document.getElementById(Settings.interface.healthID)
+  this.moneyDOM = document.getElementById(Settings.interface.moneyID)
+  this.levelDom = document.getElementById(Settings.interface.levelID)
+  this.damageDOM = document.getElementById(Settings.interface.damageID)
+  this.rangeDOM = document.getElementById(Settings.interface.rangeID)
+  this.priceDOM = document.getElementById(Settings.interface.priceID)
 
   this.level = 1
   this.levelInfo = ["","","", ""]
