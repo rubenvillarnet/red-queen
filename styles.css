@@ -14,7 +14,7 @@ body{
 #gui{
   width: 1024px;
   height: 128px;
-  background-color: green;
+  background-color: #222;
   position: relative;
   display: flex;
   flex-flow: wrap;

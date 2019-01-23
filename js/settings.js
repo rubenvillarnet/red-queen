@@ -11,7 +11,8 @@ var Settings = {
     levelID: "next-level",
     damageID: "nxt-lvl-damage",
     rangeID: "nxt-lvl-range",
-    priceID: "nxt-lvl-cost"
+    priceID: "nxt-lvl-cost",
+    waveID: "wave"
   },
   tower: {
     w: 32,
@@ -34,6 +35,35 @@ var Settings = {
       duration: 30 
     }
   },
+  foe: {
+    w: 32,
+    h: 32, 
+    color: "#D22727",
+    healthColor: "#ffffff",
+  },
+  waves: {
+    wave1:{
+      maxFrames: 3600 * 3,
+      foesRate: 230,
+      health: 10,
+      speed: 1,
+      money: 10
+    },
+    wave2:{
+      maxFrames: 3600 * 3,
+      foesRate: 190,
+      health: 14,
+      speed: 1.5,
+      money: 13
+    },
+    wave3:{
+      maxFrames: undefined,
+      foesRate: 140,
+      health: 17,
+      speed: 1.9,
+      money: 15
+    }
+  },
   field: {
     w: 1024,
     h: 640,
@@ -42,6 +72,9 @@ var Settings = {
   slot:{
     w: 64,
     h: 64
+  },
+  debug:{
+    interacions: true
   }
 }
 

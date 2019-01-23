@@ -10,7 +10,6 @@ function Tower(game,argY){
   this.range = Settings.tower.range
   this.fireRate = Settings.tower.fireRate
   this.price = Settings.tower.price
-  this.level = 1
   this.levels = Settings.tower.levels
   this.bullets = {
     color: Settings.tower.bullets.color,
@@ -19,13 +18,13 @@ function Tower(game,argY){
   }
 }
 
-Tower.prototype.render = function(){
+Tower.prototype.render = function(level){
   ctx = this.game.ctx
   ctx.fillStyle = this.color
   ctx.fillRect(this.x, this.y, this.w, this.h )
   ctx.fillStyle = this.textColor
   ctx.font= "20px sans-serif"
-  ctx.fillText(this.level, this.x+10, this.y+20 )
+  ctx.fillText(level, this.x+10, this.y+20 )
 }
 
 Tower.prototype.shoot = function(){

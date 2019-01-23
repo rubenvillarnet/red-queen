@@ -1,13 +1,14 @@
 function Foe(game){
   this.game = game
-  this.w = 32
-  this.h = 32
-  this.color = "#D22727"
-  this.healthColor = "#fff"
+  this.w = Settings.foe.w
+  this.h = Settings.foe.h
+  this.color = Settings.foe.color
+  this.healthColor = Settings.foe.healthColor
   this.x = this.game.canvas.width - this.w
   this.y = Math.floor((Math.random() * (this.game.Field.h - this.h )))
-  this.health = 10
-  this.money = 10
+  this.health = Settings.waves["wave" + this.game.currentWave].health
+  this.speed = Settings.waves["wave" + this.game.currentWave].speed
+  this.money = Settings.waves["wave" + this.game.currentWave].money
   this.maxHealth = this.health
 }
 
@@ -20,5 +21,5 @@ Foe.prototype.render = function(){
 }
 
 Foe.prototype.move = function(){
-  this.x--
+  this.x -= this.speed
 }

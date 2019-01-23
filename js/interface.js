@@ -6,6 +6,8 @@ function Interface(game){
   this.damageDOM = document.getElementById(Settings.interface.damageID)
   this.rangeDOM = document.getElementById(Settings.interface.rangeID)
   this.priceDOM = document.getElementById(Settings.interface.priceID)
+  this.waveDOM = document.getElementById(Settings.interface.waveID)
+
 
   this.level = 1
   this.levelInfo = ["","","", ""]
@@ -16,6 +18,7 @@ Interface.prototype.render = function(){
     this.health()
     this.money()
     this.nextRange()
+    this.wave()
 
     if(this.level === 4){
       this.levelDom.innerHTML = "MAX"
@@ -58,5 +61,10 @@ Interface.prototype.nextRange = function(){
 Interface.prototype.nextPrice = function(){
   ctx = this.game.ctx
   this.priceDOM.innerHTML = this.levelInfo[1]
+}
+
+Interface.prototype.wave = function(){
+  ctx = this.game.ctx
+  this.waveDOM.innerHTML = this.game.currentWave
 }
 

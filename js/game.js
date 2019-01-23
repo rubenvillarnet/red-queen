@@ -5,12 +5,36 @@ var Game = {
   fps: 0,
   health: 0,
   money: 0,
+  currentWave: 1,
   foes: [],
   bullets: [],
   slots: [],
   towers: [],
 
   start: function(){
+    
+    this.setAll()
+
+    this.intervalID = setInterval(function(){
+      this.frames++
+      this.clear()
+      Interactions.checkButton()
+      this.renderAll()
+
+      this.slots.forEach(function(slot){
+        if(slot.tower != undefined){
+          slot.tower.render(slot.level)
+          slot.tower.shoot()
+        }
+      })
+      this.manageFoes()
+      this.checkHealth()
+      this.checkGameOver()
+
+    }.bind(this), 1000 / this.fps)
+  },
+
+  setAll: function(){
     this.canvas = document.getElementById(Settings.game.canvasID)
     this.ctx = this.canvas.getContext("2d")
     this.fps = Settings.game.fps
@@ -18,61 +42,46 @@ var Game = {
     this.money = Settings.game.money
 
     this.fillSlots()
-    interactions.canvasClick(this)
-    interactions.interfaceClick(this)
+    Interactions.canvasClick(this)
+    Interactions.interfaceClick(this)
     this.Field = new Field(this)
     this.Interface = new Interface(this)
     this.Field.render()
     this.foes.push(new Foe(this))
-
-    this.intervalID = setInterval(function(){
-      this.frames++
-
-      interactions.checkButton()
-
-      this.clearScr()
-      this.Field.render()
-      this.slots.forEach(function(slot){
-        if(slot.tower != undefined){
-          slot.tower.render()
-          slot.tower.shoot()
-        }
-      })
-      
-      this.slots.forEach(function(slot){
-        slot.drawZone()
-      })
-      this.Interface.render()
-
-      
-
-      this.checkBullets()
-      this.bullets.forEach(bullet => {
-        bullet.render()
-      })
-
-      this.foes.forEach(foe => {
-        foe.render()
-        foe.move()
-      });
-      
-
-      this.checkHealth()
-      this.clearFoes()
-      this.checkGameOver()
-
-      if(this.frames > 899) this.frames = 0
-
-      if(this.frames % 230 === 0)
-      {
-        this.foes.push(new Foe(this))
-      }
-
-    }.bind(this), 1000 / this.fps)
   },
 
-  clearScr: function(){
+  renderAll: function(){
+    this.Field.render()
+    this.slots.forEach(function(slot){
+      slot.drawZone()
+    })
+    this.Interface.render()
+    this.bullets.forEach(bullet => {
+      bullet.render()
+    })
+  },
+
+  clear: function(){
     this.ctx.clearRect(0,0, this.canvas.width, this.canvas.height)
+    this.clearBullets()
+    this.clearFoes()
+  },
+
+  manageFoes: function(){
+    this.foes.forEach(foe => {
+      foe.render()
+      foe.move()
+    });
+    if(this.frames % Settings.waves["wave" + this.currentWave].foesRate === 0)
+    {
+      this.foes.push(new Foe(this))
+      
+    }
+
+    if(this.frames >= Settings.waves["wave" + this.currentWave].maxFrames){
+      this.frames = 0
+      this.currentWave++
+    }
   },
 
   clearFoes: function () {
@@ -81,6 +90,7 @@ var Game = {
         this.money += foe.money
       }
     }.bind(this))
+    
     this.foes = this.foes.filter(function (foe) {
       return foe.x > 0 && foe.health > 0 ;
     });
@@ -92,7 +102,7 @@ var Game = {
     }.bind(this))
   },
 
-  checkBullets: function(){
+  clearBullets: function(){
     this.bullets = this.bullets.filter(function(bullet){
       return bullet.duration > 0
     })
