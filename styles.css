@@ -9,6 +9,9 @@ body{
   font-family: 'Orbitron', sans-serif;
 }
 
+body #top-values, body #message-box, body #waves-counter, body #gui-bottom{
+  visibility: hidden;
+}
 
 #game-container{
   display: flex;
@@ -17,11 +20,11 @@ body{
 }
 
 #gui-top{
+  display:flex;
   width: 1024px;
   height: 50px;
   background-color: #000;
   position: relative;
-  display: flex;
   flex-flow: wrap;
   justify-content: space-between;
   align-items: center;

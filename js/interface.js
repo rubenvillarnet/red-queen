@@ -85,19 +85,3 @@ Interface.prototype.message = function(){
 }
 
 
-Interface.prototype.gameOver = function(){
-  ctx = this.game.ctx
-  ctx.fillStyle = "rgba(80, 5, 70, 0.80)"
-  ctx.fillRect(0, 0, Settings.field.w, Settings.field.h)
-  ctx.fillStyle = "#fff"
-  ctx.font = "100px Orbitron"
-  ctx.fillText("GAME OVER", 170, 300)
-  ctx.fillRect(312, 370, 400, 80)
-  ctx.fillStyle = Settings.slot.strokeStyle
-  ctx.font = "40px Orbitron"
-  ctx.fillText("PLAY AGAIN?", 365, 420)
-  this.healthDOM.innerHTML = "0"
-
-
-}
-

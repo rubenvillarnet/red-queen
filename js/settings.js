@@ -1,9 +1,10 @@
 var Settings = {
   game: {
+    gameStarted: false,
     canvasID: "canvas",
     fps: 60,
     health: 10,
-    money: 100
+    money: 300
   },
   interface: {
     healthID: "health",

@@ -41,6 +41,11 @@ var Game = {
     this.fps = Settings.game.fps
     this.health = Settings.game.health
     this.money = Settings.game.money
+    this.currentWave = 1
+    this.foes = []
+    this.bullets = []
+    this.slots = []
+    this.towers = []
 
     this.fillSlots()
     Interactions.canvasClick(this)
@@ -116,8 +121,49 @@ var Game = {
   checkGameOver: function(){
     if(this.health <= 0){
       clearInterval(this.intervalID)
-      this.Interface.gameOver()
+      this.gameOver()
       console.log("surprise mudafacka")
     }
+  },
+
+  gameOver: function(){
+    ctx = this.ctx
+    ctx.fillStyle = "rgba(80, 5, 70, 0.80)"
+    ctx.fillRect(0, 0, Settings.field.w, Settings.field.h)
+    ctx.fillStyle = "#fff"
+    ctx.font = "100px Orbitron"
+    ctx.fillText("GAME OVER", 170, 300)
+    ctx.fillRect(242, 370, 550, 120)
+    ctx.fillStyle = Settings.slot.strokeStyle
+    ctx.font = "40px Orbitron"
+    ctx.fillText("PLAY AGAIN?", 365, 420)
+    ctx.font = "20px Orbitron"
+    ctx.fillText("CLICK IN THE SCREEN TO CONTINUE", 322, 470)
+    this.Interface.healthDOM.innerHTML = "0"
+    this.canvas.addEventListener("click", (e) => {
+      this.start()
+    })
+  },
+  startScreen: function(canvas, ctx){
+    ctx.fillStyle = Settings.slot.strokeStyle
+    ctx.fillRect(0, 0, Settings.field.w, Settings.field.h)
+    ctx.fillStyle = "#fff"
+    ctx.font = "100px Orbitron"
+    ctx.fillText("RED QUEEN", 170, 250)
+    ctx.fillText("HYPOTHESIS", 130, 350)
+    ctx.font = "30px Orbitron"
+    ctx.fillText("CLICK IN THE SCREEN TO START", 230, 450)
+    canvas.addEventListener("click", function(){
+      document.getElementById("top-values").style.visibility = "visible"
+      document.getElementById("message-box").style.visibility = "visible"
+      document.getElementById("waves-counter").style.visibility = "visible"
+      document.getElementById("gui-bottom").style.visibility = "visible"
+
+      if(Settings.game.gameStarted === false){
+        Settings.game.gameStarted = true
+        this.start()
+      }
+      
+    }.bind(this))
   }
 }
