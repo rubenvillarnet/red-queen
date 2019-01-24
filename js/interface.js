@@ -9,8 +9,6 @@ function Interface(game){
   this.waveDOM = document.getElementById(Settings.interface.waveID)
   this.messageDOM = document.getElementById(Settings.message.messageID)
 
-
-
   this.level = 1
   this.levelInfo = ["","","", ""]
   

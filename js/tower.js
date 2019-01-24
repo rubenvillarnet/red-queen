@@ -24,7 +24,7 @@ Tower.prototype.render = function(level){
   ctx.beginPath()
   ctx.strokeStyle = this.color
   ctx.lineWidth = 1
-  ctx.arc(32, this.y + 16, 500, 0, 2 * Math.PI, true)
+  ctx.arc(32, this.y + 16, 400, 0, 2 * Math.PI, true)
   ctx.stroke()
   ctx.closePath()
 
@@ -59,20 +59,47 @@ Tower.prototype.render = function(level){
  
 }
 
-Tower.prototype.shoot = function(){
+Tower.prototype.attack = function(){
+  var inRange = undefined
   if(this.game.frames % this.fireRate === 0 && this.game.foes.length > 0){
-    this.game.foes[0].health -= this.damage
-    this.game.bullets.push(
-      new Bullet(
-        this.game,
-        this.x + this.w,
-        this.y + this.h / 2,
-        this.game.foes[0].x,
-        this.game.foes[0].y + this.game.foes[0].h /2,
-        this.bullets.color,
-        this.bullets.width,
-        this.bullets.duration,
-        ))
-  }
-  
+    inRange = this.checkArea()
+    if(inRange != undefined){
+      this.shoot(inRange)
+    }
+  } 
 }
+
+Tower.prototype.checkArea = function(){
+  var minDist = Settings.field.w
+  var inRange = undefined
+  this.game.foes.forEach(function(foe, index) {
+    var dx = this.x - foe.x
+    var dy = this.y - foe.y / 2
+    var distance = Math.sqrt(dx * dx + dy * dy)
+    if(distance <= this.range + (foe.w / 2)){
+      if(distance < minDist){
+        minDist = distance
+        inRange = index
+      }
+    }
+  }.bind(this))
+  return inRange
+}
+
+Tower.prototype.shoot  = function(inRange){
+  if (this.game.foes[inRange] === undefined)  return
+  this.game.foes[inRange].health -= this.damage
+  this.game.bullets.push(
+    new Bullet(
+      this.game,
+      this.x + this.w,
+      this.y,
+      inRange,
+      this.bullets.color,
+      this.bullets.width,
+      this.bullets.duration
+    )
+  )
+}
+
+  

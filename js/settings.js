@@ -2,8 +2,8 @@ var Settings = {
   game: {
     canvasID: "canvas",
     fps: 60,
-    health: 1000,
-    money: 10000
+    health: 10,
+    money: 100
   },
   interface: {
     healthID: "health",
@@ -21,7 +21,7 @@ var Settings = {
     color: "#9C398F",
     levelColor: "#500546",
     damage: 1,
-    range: 0,
+    range: 400,
     fireRate: 60,
     price: 50,
     levels: [
@@ -44,23 +44,23 @@ var Settings = {
   waves: {
     wave1:{
       maxFrames: 1800,
-      foesRate: 250,
+      foesRate: 230,
       health: 10,
-      speed: 1 *4,
+      speed: 1,
       money: 10
     },
     wave2:{
       maxFrames: 1800,
       foesRate: 190,
       health: 14,
-      speed: 1.5 *4,
+      speed: 1.5,
       money: 13
     },
     wave3:{
       maxFrames: undefined,
       foesRate: 140,
       health: 17,
-      speed: 1.9 *4,
+      speed: 1.9,
       money: 15
     }
   },

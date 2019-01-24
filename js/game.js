@@ -23,7 +23,7 @@ var Game = {
       this.slots.forEach(function(slot){
         if(slot.tower != undefined){
           slot.tower.render(slot.level)
-          slot.tower.shoot()
+          slot.tower.attack()
         }
       })
       
@@ -55,7 +55,7 @@ var Game = {
     this.Field.render()
 
     this.Interface.render()
-    this.bullets.forEach(bullet => {
+    this.bullets.forEach(function(bullet) {
       bullet.render()
     })
   },
