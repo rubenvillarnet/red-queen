@@ -116,6 +116,7 @@ var Game = {
   checkGameOver: function(){
     if(this.health <= 0){
       clearInterval(this.intervalID)
+      this.Interface.gameOver()
       console.log("surprise mudafacka")
     }
   }
