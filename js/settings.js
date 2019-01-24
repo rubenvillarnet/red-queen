@@ -46,21 +46,21 @@ var Settings = {
       maxFrames: 1800,
       foesRate: 250,
       health: 10,
-      speed: 1 *2,
+      speed: 1 *4,
       money: 10
     },
     wave2:{
       maxFrames: 1800,
       foesRate: 190,
       health: 14,
-      speed: 1.5 *2,
+      speed: 1.5 *4,
       money: 13
     },
     wave3:{
       maxFrames: undefined,
       foesRate: 140,
       health: 17,
-      speed: 1.9 *2,
+      speed: 1.9 *4,
       money: 15
     }
   },

@@ -20,6 +20,14 @@ function Tower(game,argY){
 
 Tower.prototype.render = function(level){
   ctx = this.game.ctx
+
+  ctx.beginPath()
+  ctx.strokeStyle = this.color
+  ctx.lineWidth = 1
+  ctx.arc(32, this.y + 16, 500, 0, 2 * Math.PI, true)
+  ctx.stroke()
+  ctx.closePath()
+
   ctx.fillStyle = this.color
   ctx.fillRect(this.x, this.y, this.w, this.h )
   switch(level){

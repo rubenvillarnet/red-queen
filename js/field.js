@@ -12,7 +12,6 @@ Field.prototype.render = function(){
   ctx.fillRect(0, 0, this.w, this.h)
   this.grid()
   this.slots()
-  
 }
 
 Field.prototype.grid = function(){
@@ -20,14 +19,14 @@ Field.prototype.grid = function(){
   ctx.lineWidth = 1
   ctx.strokeStyle = Settings.field.gridColor
 
-  for(var i = 0; i < Settings.field.w; i += Settings.field.gridWH){
+  for(var i = Settings.field.gridWH; i < Settings.field.w; i += Settings.field.gridWH){
     ctx.beginPath()
     ctx.moveTo(i, 0)
     ctx.lineTo(i,Settings.field.h)
     ctx.stroke()
     ctx.closePath()
   }
-  for(var j = 0; j < Settings.field.h; j += Settings.field.gridWH){
+  for(var j = Settings.field.gridWH; j < Settings.field.h; j += Settings.field.gridWH){
     ctx.beginPath()
     ctx.moveTo(0, j)
     ctx.lineTo(Settings.field.w, j)
@@ -38,12 +37,16 @@ Field.prototype.grid = function(){
 
 Field.prototype.slots = function(){
   var ctx = this.game.ctx
+
+  
+
   for(var i = 16, slotSelected = 0; i <= 608; i+=64, slotSelected++){
     ctx.fillStyle = Settings.slot.fillStyle
     ctx.strokeStyle = Settings.slot.strokeStyle
     ctx.lineWidth = 4
     ctx.strokeRect(16, i , 32, 32)
     ctx.fillRect(16, i , 32, 32)
+
     if(slotSelected === Settings.slot.slotSelected){
       tower = this.game.slots[slotSelected].tower
       ctx.fillStyle = Settings.slot.selectedFillStyle

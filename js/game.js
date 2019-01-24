@@ -20,16 +20,17 @@ var Game = {
       this.clear()
       Interactions.checkButton()
       this.renderAll()
-
       this.slots.forEach(function(slot){
         if(slot.tower != undefined){
           slot.tower.render(slot.level)
           slot.tower.shoot()
         }
       })
+      
       this.manageFoes()
       this.checkHealth()
       this.checkGameOver()
+
 
     }.bind(this), 1000 / this.fps)
   },
@@ -96,7 +97,7 @@ var Game = {
 
   checkHealth: function(){
     this.foes.forEach(function(foe){
-      if(foe.x === 0)  this.health--
+      if(foe.x <= 0)  this.health--
     }.bind(this))
   },
 
