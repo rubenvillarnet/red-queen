@@ -1,7 +1,12 @@
+*{
+  box-sizing: border-box;
+}
+
 body{
   margin: 0;
   padding: 0;
   background-color: #ccc;
+  font-family: 'Orbitron', sans-serif;
 }
 
 
@@ -11,10 +16,77 @@ body{
   justify-content: center;
 }
 
-#gui{
+#gui-top{
   width: 1024px;
-  height: 128px;
-  background-color: #222;
+  height: 50px;
+  background-color: #000;
+  position: relative;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-values{
+  margin-left: 32px;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-size: 30px;
+}
+
+.top-values div{
+  margin-right: 32px;
+}
+
+.top-values span{
+  padding-left: 10px;
+}
+
+.fa-dollar-sign{
+  color: #F8EE70;
+}
+
+.fa-heart{
+  color: #F61E65;
+}
+
+.waves-counter{
+  color: #fff;
+  font-size: 30px;
+  margin-right: 32px;
+  
+}
+
+.message-box{
+  flex-grow: 1;
+  height: 100%;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20px;
+}
+
+.message-box div{
+  color: #F61E65;
+  font-size: 36px;
+  background-color: #F8EE70;
+  height: 100%;
+  width: 100%;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#gui-bottom{
+  width: 1024px;
+  height: 78px;
+  background-color: #000;
   position: relative;
   display: flex;
   flex-flow: wrap;
@@ -31,40 +103,88 @@ body{
   cursor: pointer;
 }
 
-#blue-tower-button .button{
-  width: 64px;
-  height: 64px;
-  background-color: #0400FF;
+#tower-buttons{
+  height: 100%;
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+}
+
+#purple-tower-button{
+  padding: 0 32px;
+  height: 100%;
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  width: 340px;
+}
+
+.purple-bg{
+  background-color: rgba(80, 5, 70, 0.22);
+  border: 1px solid #500546;
+}
+
+.purple-bg:hover{
+  background-color: rgba(80, 5, 70, 0.50);
   
 }
 
-#blue-tower-button .text li{
+.yellow-bg{
+  background-color: rgba(248, 238, 112, 0.34);
+  border: 1px solid rgba(248, 238, 112, 1);
+}
+
+
+#purple-tower-button .button{
+  width: 48px;
+  height: 48px;
+  background-color: #500546;
+  
+}
+
+#purple-tower-button .text ul{
+  margin: 0;
+}
+
+#purple-tower-button .text li{
   list-style: none;
+  font-size: 18px;
   color: #fff;
 }
 
-
-#right-info{
-  text-align: right;
-  color: #fff;
-  font-size: 20px;
-  margin-right: 32px;
-}
-
-#blue-tower-button .upgrade-tower{
+#purple-tower-button .upgrade-tower{
   text-align: left;
   color: #fff;
   font-size: 16px;
   margin-left: 32px;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
-#blue-tower-button .upgrade-tower ul{
+#purple-tower-button .upgrade-tower ul{
   padding: 0;
 }
-#blue-tower-button .upgrade-tower li{
+#purple-tower-button .upgrade-tower li{
   list-style: none;
 }
 
-.hidden{
+.fa-level-up-alt{
+  font-size: 48px;
+  color: #500546;
+  margin-right: 20px;
+}
+
+#nxt-lvl-damage{
+  margin-right: 10px;
+}
+
+#nxt-lvl-cost{
+  margin-left: 10px;
+  margin-right: 2px;
+}
+
+#game-container .hidden{
   display: none;
 }
 

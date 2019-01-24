@@ -9,6 +9,7 @@ var Interactions = {
         if(this.mouseClick[0] >= slot.x && this.mouseClick[0] < slot.x + slot.w &&
           this.mouseClick[1] >= slot.y && this.mouseClick[1] < slot.y + slot.h){
             if(slot.tower === undefined && this.buttonClicked === true){
+              Settings.slot.slotSelected = undefined
               this.debug()
               if(game.money < 50){
                 console.log("no hay pasta")
@@ -24,35 +25,38 @@ var Interactions = {
               }
             }
             else if(slot.tower == undefined && this.buttonClicked === false){
+              Settings.slot.slotSelected = undefined
               this.debug()
               this.clearFlags(3)
             }
-            else if(slot.tower != undefined /* && this.buttonClicked === true */){
+            else if(slot.tower != undefined ){
               this.debug()
               this.towerSelected = index 
               this.buttonClicked = false
               this.buttonIsNewTower = false
               game.Interface.level = game.slots[index].level
               game.Interface.levelInfo = game.slots[index].tower.levels[game.slots[index].level -1]
+              Settings.slot.slotSelected = index
             }else{
               this.debug()
               
             }
               //TODO mostrar la torre como seleccionada
-        }else{
+        }else if(this.mouseClick[0] > slot.x + slot.w ){
+          this.clearFlags()
         }
       }.bind(this)) //TODO que pasa si pinchas en cualquier otra area del canvas
     })
   },
   interfaceClick: function(game){
-    document.getElementById("blue-tower-button").addEventListener('click', () => {
-      if(this.towerSelected === undefined){    
+    document.getElementById("purple-tower-button").addEventListener('click', () => {
+      if(this.towerSelected === undefined){
+        Settings.slot.slotSelected = undefined    
         this.debug() 
         if(game.money < 50){ //TODO habrá que cambiarlo cuando haya más torres
           console.log("no hay pasta") //TODO sustituirlo por un mensaje en pantalla
         }else{
           this.buttonClicked = true
-          //TODO mostrar que el botón está pulsado
         }
       } else{
           this.debug()
@@ -61,23 +65,32 @@ var Interactions = {
           }else{
             this.upgradeTower(game,this.towerSelected)
           }
-          //TODO definir cómo ampliar
-          //TODO ampliar torre (estadísticas y aspecto)
       }
     })
   },
 
   checkButton: function(game){
-    var btnZone = document.getElementById("blue-tower-button").childNodes
+    var btnZone = document.getElementById("purple-tower-button")
+    var childBtn = btnZone.childNodes
     var newBtn = btnZone[1]
     var upgradeBtn = btnZone[3]
 
     if(this.buttonIsNewTower === true){
-      btnZone[1].classList.remove("hidden")
-      btnZone[3].classList.add("hidden")
+      if(this.buttonClicked === true){
+        btnZone.classList.add("yellow-bg")
+        btnZone.classList.remove("purple-bg")
+      }else{
+        btnZone.classList.add("purple-bg")
+        btnZone.classList.remove("yellow-bg")
+      }
+      childBtn[1].classList.remove("hidden")
+      childBtn[3].classList.add("hidden")
+      
     }else{
-      btnZone[1].classList.add("hidden")
-      btnZone[3].classList.remove("hidden")
+      childBtn[1].classList.add("hidden")
+      childBtn[3].classList.remove("hidden")
+      btnZone.classList.add("yellow-bg")
+      btnZone.classList.remove("purple-bg")
     }
   },
   upgradeTower: function(game,nTower){

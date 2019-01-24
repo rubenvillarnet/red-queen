@@ -17,7 +17,7 @@ function Interface(game){
 Interface.prototype.render = function(){
     this.health()
     this.money()
-    this.nextRange()
+    //this.nextRange()
     this.wave()
 
     if(this.level === 4){

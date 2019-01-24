@@ -52,9 +52,7 @@ var Game = {
 
   renderAll: function(){
     this.Field.render()
-    this.slots.forEach(function(slot){
-      slot.drawZone()
-    })
+
     this.Interface.render()
     this.bullets.forEach(bullet => {
       bullet.render()

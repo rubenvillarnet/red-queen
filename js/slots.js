@@ -10,8 +10,8 @@ function Slot(game, y){
 
 Slot.prototype.drawZone = function(){
   ctx = this.game.ctx
-  ctx.fillStyle = "rgba(255,0,0,0.2)"
-  ctx.strokeStyle = "rgb(255,0,0)"
+  ctx.fillStyle = Settings.slot.fillStyle
+  ctx.strokeStyle = Settings.slot.strokeStyle
   ctx.strokeRect(this.x, this.y, this.w, this.h)
   ctx.fillRect(this.x, this.y, this.w, this.h)
 }

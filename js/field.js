@@ -15,10 +15,18 @@ Field.prototype.render = function(){
 
 Field.prototype.slots = function(){
   ctx = this.game.ctx
-  for(var i = 16; i <= 608; i+=64){
-    ctx.fillStyle = "rgba(4, 0, 255, 0.1"
-    ctx.strokeStyle = "#0400FF"
+  for(var i = 16, slotSelected = 0; i <= 608; i+=64, slotSelected++){
+    ctx.fillStyle = Settings.slot.fillStyle
+    ctx.strokeStyle = Settings.slot.strokeStyle
+    ctx.lineWidth = 2
     ctx.strokeRect(16, i , 32, 32)
     ctx.fillRect(16, i , 32, 32)
+    if(slotSelected === Settings.slot.slotSelected){
+      tower = this.game.slots[slotSelected].tower
+      ctx.fillStyle = Settings.slot.selectedFillStyle
+      ctx.strokeStyle = Settings.slot.selectedStrokeStyle
+      ctx.fillRect(tower.x - tower.w / 4, tower.y - tower.h / 4, tower.w + tower.x, tower.h + tower.h / 2)
+      ctx.strokeRect(tower.x - tower.w / 4, tower.y - tower.h / 4, tower.w + tower.x, tower.h + tower.h / 2)
+    }
   }
 }

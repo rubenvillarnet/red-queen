@@ -12,10 +12,12 @@ function Bullet(game, x1, y1, x2, y2, color, width, duration){
 Bullet.prototype.render = function(){
   ctx = this.game.ctx
   ctx.beginPath()
+  ctx.lineWidth = this.width
   ctx.strokeStyle = this.color
   ctx.moveTo(this.x1, this.y1)
   ctx.lineTo(this.x2, this.y2)
   ctx.stroke()
   ctx.closePath()
+  ctx.lineWidth = 2
   this.duration--
 }

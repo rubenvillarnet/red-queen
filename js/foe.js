@@ -17,7 +17,7 @@ Foe.prototype.render = function(){
   ctx.fillStyle = this.color
   ctx.fillRect(this.x, this.y, this.w, this.h )
   ctx.fillStyle = this.healthColor
-  ctx.fillRect(this.x, this.y, (this.w / this.maxHealth) * this.health, 6)
+  ctx.fillRect(this.x, this.y, (this.w / this.maxHealth) * this.health, this.h)
 }
 
 Foe.prototype.move = function(){

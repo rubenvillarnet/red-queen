@@ -2,7 +2,7 @@ var Settings = {
   game: {
     canvasID: "canvas",
     fps: 60,
-    health: 10,
+    health: 1,
     money: 100
   },
   interface: {
@@ -18,8 +18,8 @@ var Settings = {
     w: 32,
     h: 32,
     x: 16,
-    color: "#0400FF",
-    textColor: "#FFF",
+    color: "#9C398F",
+    levelColor: "#500546",
     damage: 1,
     range: 0,
     fireRate: 60,
@@ -30,7 +30,7 @@ var Settings = {
       [0.3, 30, "30%"]
     ],
     bullets: {
-      color: "#ffffff",
+      color: "#F8EE70",
       width: 2,
       duration: 30 
     }
@@ -38,19 +38,19 @@ var Settings = {
   foe: {
     w: 32,
     h: 32, 
-    color: "#D22727",
-    healthColor: "#ffffff",
+    color: "rgba(104, 253, 248, 0.23)",
+    healthColor: "rgba(104, 253, 248, 1)",
   },
   waves: {
     wave1:{
-      maxFrames: 3600 * 3,
-      foesRate: 230,
+      maxFrames: 1800,
+      foesRate: 250,
       health: 10,
       speed: 1,
       money: 10
     },
     wave2:{
-      maxFrames: 3600 * 3,
+      maxFrames: 1800,
       foesRate: 190,
       health: 14,
       speed: 1.5,
@@ -67,14 +67,20 @@ var Settings = {
   field: {
     w: 1024,
     h: 640,
-    color: "#222"
+    color: "#000"
   },
   slot:{
     w: 64,
-    h: 64
+    h: 64,
+    slotSelected: undefined,
+    fillStyle: "rgba(80, 5, 70, 0.24)",
+    strokeStyle: "#500546",
+    selectedFillStyle: "rgba(99, 117, 248, 0.34)",
+    selectedStrokeStyle: "rgba(99, 117, 248, 1)"
+
   },
   debug:{
-    interacions: true
+    interacions: false
   }
 }
 

@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Red Queen</title>
+  <link href="https://fonts.googleapis.com/css?family=Orbitron:400,500,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <link rel="stylesheet" href="styles.css">
   <script type="text/javascript" src="js/settings.js"></script>
   <script type="text/javascript" src="js/slots.js"></script>
@@ -19,37 +21,44 @@
 </head>
 <body>
   <div id="game-container">
+    <div id="gui-top">
+      <div class="top-values">
+        <div><i class="fas fa-dollar-sign"></i><span id="money"></span></div>
+        <div><i class="fas fa-heart"></i><span id="health"></span></div>
+      </div>
+      <div class="message-box">
+        <div id="message" class="hidden">ALERTA!</div>
+        
+      </div>
+      <div class="waves-counter">
+          <p>WAVE <span id="wave"></span></p>
+      </div>
+    </div>
     <canvas id="canvas" width="1024px" height="640px"></canvas>
-    <div id="gui">
+    <div id="gui-bottom">
       <div id="tower-buttons">
-        <div id="blue-tower-button">
+        <div id="purple-tower-button" class="purple-bg">
           <div class="new-tower">
               <div class="button">
                 </div>
                 <div class="text">
                     <ul>
-                      <li>$50</li>
-                      <li>Range: 10</li>
+                      <li>$ 50</li>
                       <li>Damage: 5</li>
                     </ul>
                   </div>
           </div>
           <div class="upgrade-tower hidden">
-            <p>Upgrade tower</p>
+            <div class="icon"><i class="fas fa-level-up-alt"></i></div>
             <ul>
-              <li>Next level: <span id="next-level"></span></li>
-              <li>Damage: +<span id="nxt-lvl-damage"></span></li>
-              <li>Range: +<span id="nxt-lvl-range" ></span></li>
-              <li><span id="nxt-lvl-cost"></span>$</li>
+              <li>Level <span id="next-level"></span></li>
+              <li>Damage +<span id="nxt-lvl-damage"></span>|<span id="nxt-lvl-cost"></span>$</li>
             </ul>
           </div>
           
         </div>
       </div>
       <div id="right-info">
-        <p>$: <span id="money"></span></p>
-        <p>Health: <span id="health"></span></p>
-        <p>Wave: <span id="wave"></span></p>
       </div>
       
     </div>

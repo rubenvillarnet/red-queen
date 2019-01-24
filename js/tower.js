@@ -5,7 +5,7 @@ function Tower(game,argY){
   this.x = Settings.tower.x
   this.y = argY
   this.color = Settings.tower.color
-  this.textColor = Settings.tower.textColor
+  this.levelColor = Settings.tower.levelColor
   this.damage = Settings.tower.damage
   this.range = Settings.tower.range
   this.fireRate = Settings.tower.fireRate
@@ -22,9 +22,33 @@ Tower.prototype.render = function(level){
   ctx = this.game.ctx
   ctx.fillStyle = this.color
   ctx.fillRect(this.x, this.y, this.w, this.h )
-  ctx.fillStyle = this.textColor
-  ctx.font= "20px sans-serif"
-  ctx.fillText(level, this.x+10, this.y+20 )
+  switch(level){
+    case 1:
+    ctx.fillStyle = this.levelColor
+    ctx.fillRect(this.x, this.y, this.w, this.h )
+    break
+    case 2:
+    ctx.fillStyle = this.levelColor
+    ctx.fillRect(
+      this.x + (this.w / 6), 
+      this.y + (this.h / 6), 
+      (this.w * 2) / 3, 
+      (this.h * 2) / 3)
+    break
+    case 3:
+    ctx.fillStyle = this.levelColor
+    ctx.fillRect(
+      this.x + (this.w / 3), 
+      this.y + (this.h / 3), 
+      this.w / 3, 
+      this.h / 3 )
+    break
+    case 4:
+    ctx.fillStyle = this.color
+    ctx.fillRect(this.x, this.y, this.w, this.h )
+    break
+  }
+ 
 }
 
 Tower.prototype.shoot = function(){
