@@ -54,14 +54,14 @@ var Interactions = {
         Settings.slot.slotSelected = undefined    
         this.debug() 
         if(game.money < 50){ //TODO habrá que cambiarlo cuando haya más torres
-          console.log("no hay pasta") //TODO sustituirlo por un mensaje en pantalla
+          Settings.message.message = "insufficient funds"
         }else{
           this.buttonClicked = true
         }
       } else{
           this.debug()
           if(game.money < 30){ // TODO de momento se queda con un sólo valor
-            console.log("no hay pasta") //sustituirlo por un mensaje en pantalla
+            Settings.message.message = "insufficient funds"
           }else{
             this.upgradeTower(game,this.towerSelected)
           }
@@ -72,8 +72,6 @@ var Interactions = {
   checkButton: function(game){
     var btnZone = document.getElementById("purple-tower-button")
     var childBtn = btnZone.childNodes
-    var newBtn = btnZone[1]
-    var upgradeBtn = btnZone[3]
 
     if(this.buttonIsNewTower === true){
       if(this.buttonClicked === true){
@@ -95,7 +93,7 @@ var Interactions = {
   },
   upgradeTower: function(game,nTower){
     if(game.slots[nTower].level >= 4){
-      console.log("no se puede subir de nivel")
+      Settings.message.message = "max level reached!!"
     }else{
       game.money -= 30
       game.slots[nTower].level++

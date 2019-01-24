@@ -2,8 +2,8 @@ var Settings = {
   game: {
     canvasID: "canvas",
     fps: 60,
-    health: 1,
-    money: 100
+    health: 1000,
+    money: 10000
   },
   interface: {
     healthID: "health",
@@ -46,29 +46,37 @@ var Settings = {
       maxFrames: 1800,
       foesRate: 250,
       health: 10,
-      speed: 1,
+      speed: 1 *2,
       money: 10
     },
     wave2:{
       maxFrames: 1800,
       foesRate: 190,
       health: 14,
-      speed: 1.5,
+      speed: 1.5 *2,
       money: 13
     },
     wave3:{
       maxFrames: undefined,
       foesRate: 140,
       health: 17,
-      speed: 1.9,
+      speed: 1.9 *2,
       money: 15
     }
+  },
+  message: {
+    message: undefined,
+    duration: 120,
+    initialDuration: 120,
+    messageID: "message"
   },
   field: {
     w: 1024,
     h: 640,
-    color: "#000"
-  },
+    color: "#000",
+    gridWH: 32,
+    gridColor: "rgba(99, 117, 248, 0.46)"
+    },
   slot:{
     w: 64,
     h: 64,

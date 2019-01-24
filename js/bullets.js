@@ -10,6 +10,11 @@ function Bullet(game, x1, y1, x2, y2, color, width, duration){
 }
 
 Bullet.prototype.render = function(){
+  if(this.game.foes.length > 0){
+    this.x2 = this.game.foes[0].x
+    this.y2 = this.game.foes[0].y + Settings.foe.h /2
+  }
+
   ctx = this.game.ctx
   ctx.beginPath()
   ctx.lineWidth = this.width

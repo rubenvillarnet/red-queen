@@ -7,18 +7,41 @@ function Field(game){
 }
 
 Field.prototype.render = function(){
-  ctx = this.game.ctx
+  var ctx = this.game.ctx
   ctx.fillStyle = this.color
   ctx.fillRect(0, 0, this.w, this.h)
+  this.grid()
   this.slots()
+  
+}
+
+Field.prototype.grid = function(){
+  var ctx = this.game.ctx
+  ctx.lineWidth = 1
+  ctx.strokeStyle = Settings.field.gridColor
+
+  for(var i = 0; i < Settings.field.w; i += Settings.field.gridWH){
+    ctx.beginPath()
+    ctx.moveTo(i, 0)
+    ctx.lineTo(i,Settings.field.h)
+    ctx.stroke()
+    ctx.closePath()
+  }
+  for(var j = 0; j < Settings.field.h; j += Settings.field.gridWH){
+    ctx.beginPath()
+    ctx.moveTo(0, j)
+    ctx.lineTo(Settings.field.w, j)
+    ctx.stroke()
+    ctx.closePath()
+  }
 }
 
 Field.prototype.slots = function(){
-  ctx = this.game.ctx
+  var ctx = this.game.ctx
   for(var i = 16, slotSelected = 0; i <= 608; i+=64, slotSelected++){
     ctx.fillStyle = Settings.slot.fillStyle
     ctx.strokeStyle = Settings.slot.strokeStyle
-    ctx.lineWidth = 2
+    ctx.lineWidth = 4
     ctx.strokeRect(16, i , 32, 32)
     ctx.fillRect(16, i , 32, 32)
     if(slotSelected === Settings.slot.slotSelected){

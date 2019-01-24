@@ -7,6 +7,8 @@ function Interface(game){
   this.rangeDOM = document.getElementById(Settings.interface.rangeID)
   this.priceDOM = document.getElementById(Settings.interface.priceID)
   this.waveDOM = document.getElementById(Settings.interface.waveID)
+  this.messageDOM = document.getElementById(Settings.message.messageID)
+
 
 
   this.level = 1
@@ -19,6 +21,7 @@ Interface.prototype.render = function(){
     this.money()
     //this.nextRange()
     this.wave()
+    this.message()
 
     if(this.level === 4){
       this.levelDom.innerHTML = "MAX"
@@ -66,5 +69,20 @@ Interface.prototype.nextPrice = function(){
 Interface.prototype.wave = function(){
   ctx = this.game.ctx
   this.waveDOM.innerHTML = this.game.currentWave
+}
+
+Interface.prototype.message = function(){
+  if(Settings.message.message != undefined){
+    this.messageDOM.classList.remove("hidden")
+    this.messageDOM.innerHTML = Settings.message.message
+    Settings.message.duration--
+
+    if(Settings.message.duration === 0){
+      this.messageDOM.classList.add("hidden")
+    this.messageDOM.innerHTML = ""
+    Settings.message.message = undefined
+    Settings.message.duration = Settings.message.initialDuration
+    }
+  }
 }
 

@@ -5,7 +5,7 @@
 body{
   margin: 0;
   padding: 0;
-  background-color: #ccc;
+  background-color: #000;
   font-family: 'Orbitron', sans-serif;
 }
 
@@ -73,6 +73,7 @@ body{
 .message-box div{
   color: #F61E65;
   font-size: 36px;
+  text-transform: uppercase;
   background-color: #F8EE70;
   height: 100%;
   width: 100%;

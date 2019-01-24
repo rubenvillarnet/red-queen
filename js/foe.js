@@ -5,7 +5,7 @@ function Foe(game){
   this.color = Settings.foe.color
   this.healthColor = Settings.foe.healthColor
   this.x = this.game.canvas.width - this.w
-  this.y = Math.floor((Math.random() * (this.game.Field.h - this.h )))
+  this.y = Math.floor((Math.random() * (this.game.Field.h / this.h ))) * this.h
   this.health = Settings.waves["wave" + this.game.currentWave].health
   this.speed = Settings.waves["wave" + this.game.currentWave].speed
   this.money = Settings.waves["wave" + this.game.currentWave].money
