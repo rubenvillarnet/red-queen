@@ -15,10 +15,11 @@ function Interface(game){
 }
 
 Interface.prototype.render = function(){
-    this.health()
-    this.money()
+    ctx = this.game.ctx
+    this.healthDOM.innerHTML = this.game.health
+    this.moneyDOM.innerHTML = this.game.money
     //this.nextRange()
-    this.wave()
+    this.waveDOM.innerHTML = this.game.currentWave
     this.message()
 
     if(this.level === 4){
@@ -27,46 +28,11 @@ Interface.prototype.render = function(){
       this.priceDOM.innerHTML =  "-"
 
     }else{
-      this.nextLevel()
-      this.nextDamage()
-      this.nextPrice()
+      this.levelDom.innerHTML = this.level +1
+      this.damageDOM.innerHTML = this.levelInfo[2]
+      this.priceDOM.innerHTML = this.levelInfo[1]
     }
   
-}
-
-Interface.prototype.health = function(){
-  ctx = this.game.ctx
-  this.healthDOM.innerHTML = this.game.health
-}
-
-Interface.prototype.money = function(){
-  ctx = this.game.ctx
-  this.moneyDOM.innerHTML = this.game.money
-}
-
-Interface.prototype.nextLevel = function(){
-  ctx = this.game.ctx
-  this.levelDom.innerHTML = this.level +1
-}
-
-Interface.prototype.nextDamage = function(){
-  ctx = this.game.ctx
-  this.damageDOM.innerHTML = this.levelInfo[2]
-}
-
-Interface.prototype.nextRange = function(){
-  ctx = this.game.ctx
-  this.rangeDOM.innerHTML = "-"
-}
-
-Interface.prototype.nextPrice = function(){
-  ctx = this.game.ctx
-  this.priceDOM.innerHTML = this.levelInfo[1]
-}
-
-Interface.prototype.wave = function(){
-  ctx = this.game.ctx
-  this.waveDOM.innerHTML = this.game.currentWave
 }
 
 Interface.prototype.message = function(){

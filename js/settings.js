@@ -1,9 +1,10 @@
 var Settings = {
   game: {
     gameStarted: false,
+    gameOver: false,
     canvasID: "canvas",
     fps: 60,
-    health: 10,
+    health: 1,
     money: 300
   },
   interface: {
@@ -87,6 +88,16 @@ var Settings = {
     selectedFillStyle: "rgba(99, 117, 248, 0.34)",
     selectedStrokeStyle: "rgba(99, 117, 248, 1)"
 
+  },
+  sounds:{
+    start: "../media/start.wav",
+    shoot: "../media/shoot.wav",
+    gameOver: "../media/gameOver.wav",
+    kill: "../media/kill.wav",
+    newTower: "../media/newTower.wav",
+    upgrade: "../media/upgrade.wav",
+    noMoney: "../media/error.wav",
+    hit: "../media/hit.mp3"
   },
   debug:{
     interacions: false

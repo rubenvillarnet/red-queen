@@ -64,6 +64,7 @@ Tower.prototype.attack = function(){
   if(this.game.frames % this.fireRate === 0 && this.game.foes.length > 0){
     inRange = this.checkArea()
     if(inRange != undefined){
+      sound.shoot.play()
       this.shoot(inRange)
     }
   } 

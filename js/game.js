@@ -92,6 +92,7 @@ var Game = {
     this.foes.forEach(function(foe){
       if(foe.health <= 0){
         this.money += foe.money
+        sound.kill.play()
       }
     }.bind(this))
     
@@ -102,7 +103,11 @@ var Game = {
 
   checkHealth: function(){
     this.foes.forEach(function(foe){
-      if(foe.x <= 0)  this.health--
+      if(foe.x <= 0) {
+        this.health--
+        sound.kill.play()
+      } 
+      
     }.bind(this))
   },
 
@@ -122,11 +127,12 @@ var Game = {
     if(this.health <= 0){
       clearInterval(this.intervalID)
       this.gameOver()
-      console.log("surprise mudafacka")
     }
   },
 
   gameOver: function(){
+    sound.gameOver.play()
+    Settings.game.gameOver = true
     ctx = this.ctx
     ctx.fillStyle = "rgba(80, 5, 70, 0.80)"
     ctx.fillRect(0, 0, Settings.field.w, Settings.field.h)
@@ -141,7 +147,11 @@ var Game = {
     ctx.fillText("CLICK IN THE SCREEN TO CONTINUE", 322, 470)
     this.Interface.healthDOM.innerHTML = "0"
     this.canvas.addEventListener("click", (e) => {
-      this.start()
+      if(Settings.game.gameOver === true){
+        Settings.game.gameOver = false
+        sound.start.play()
+        this.start()
+      }
     })
   },
   startScreen: function(canvas, ctx){
@@ -161,6 +171,7 @@ var Game = {
 
       if(Settings.game.gameStarted === false){
         Settings.game.gameStarted = true
+        sound.start.play()
         this.start()
       }
       

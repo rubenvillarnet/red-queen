@@ -14,6 +14,7 @@ var Interactions = {
               if(game.money < 50){
                 console.log("no hay pasta")
               }else{
+                sound.newTower.play()
                 this.buttonClicked = false
                 this.towerSelected = index
                 game.slots[index].tower = new Tower(game, game.slots[index].y + 16)
@@ -55,6 +56,7 @@ var Interactions = {
         this.debug() 
         if(game.money < 50){ //TODO habrá que cambiarlo cuando haya más torres
           Settings.message.message = "insufficient funds"
+          sound.noMoney.play()
         }else{
           this.buttonClicked = true
         }
@@ -62,6 +64,7 @@ var Interactions = {
           this.debug()
           if(game.money < 30){ // TODO de momento se queda con un sólo valor
             Settings.message.message = "insufficient funds"
+            sound.noMoney.play()
           }else{
             this.upgradeTower(game,this.towerSelected)
           }
@@ -94,7 +97,9 @@ var Interactions = {
   upgradeTower: function(game,nTower){
     if(game.slots[nTower].level >= 4){
       Settings.message.message = "max level reached!!"
+      sound.noMoney.play()
     }else{
+      sound.upgrade.play()
       game.money -= 30
       game.slots[nTower].level++
       game.slots[nTower].tower.level = game.slots[nTower].level
