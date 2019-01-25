@@ -97,7 +97,8 @@ var Settings = {
     newTower: "../media/newTower.wav",
     upgrade: "../media/upgrade.wav",
     noMoney: "../media/error.wav",
-    hit: "../media/hit.mp3"
+    hit: "../media/hit.mp3",
+    music: "../media/music.mp3"
   },
   debug:{
     interacions: false

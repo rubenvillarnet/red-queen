@@ -14,6 +14,7 @@ var Interactions = {
               if(game.money < 50){
                 console.log("no hay pasta")
               }else{
+                sound.newTower.volume = 0.4
                 sound.newTower.play()
                 this.buttonClicked = false
                 this.towerSelected = index

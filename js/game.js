@@ -12,6 +12,12 @@ var Game = {
   towers: [],
 
   start: function(){
+    sound.music.loop = true
+    sound.music.volume= 0.4
+    setTimeout(function(){
+      sound.music.play()
+    }, 2000)
+    
     
     this.setAll()
 
@@ -92,6 +98,7 @@ var Game = {
     this.foes.forEach(function(foe){
       if(foe.health <= 0){
         this.money += foe.money
+        sound.kill.volume = 0.3
         sound.kill.play()
       }
     }.bind(this))

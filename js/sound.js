@@ -6,5 +6,6 @@ var sound = {
   newTower: new Audio(Settings.sounds.newTower),
   upgrade: new Audio(Settings.sounds.upgrade),
   noMoney: new Audio(Settings.sounds.noMoney),
-  hit: new Audio (Settings.sounds.hit)
+  hit: new Audio (Settings.sounds.hit),
+  music: new Audio(Settings.sounds.music)
 }
