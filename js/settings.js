@@ -4,7 +4,7 @@ var Settings = {
     gameOver: false,
     canvasID: "canvas",
     fps: 60,
-    health: 1,
+    health: 10,
     money: 300
   },
   interface: {
