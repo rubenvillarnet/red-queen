@@ -34,31 +34,31 @@ var Settings = {
     bullets: {
       color: "#F8EE70",
       width: 2,
-      duration: 30 
+      duration: 30
     }
   },
   foe: {
     w: 32,
-    h: 32, 
+    h: 32,
     color: "rgba(104, 253, 248, 0.23)",
     healthColor: "rgba(104, 253, 248, 1)",
   },
   waves: {
-    wave1:{
+    wave1: {
       maxFrames: 1800,
       foesRate: 230,
       health: 10,
       speed: 1,
       money: 10
     },
-    wave2:{
+    wave2: {
       maxFrames: 1800,
       foesRate: 190,
       health: 14,
       speed: 1.5,
       money: 13
     },
-    wave3:{
+    wave3: {
       maxFrames: undefined,
       foesRate: 140,
       health: 17,
@@ -78,8 +78,8 @@ var Settings = {
     color: "#000",
     gridWH: 32,
     gridColor: "rgba(99, 117, 248, 0.46)"
-    },
-  slot:{
+  },
+  slot: {
     w: 64,
     h: 64,
     slotSelected: undefined,
@@ -89,7 +89,7 @@ var Settings = {
     selectedStrokeStyle: "rgba(99, 117, 248, 1)"
 
   },
-  sounds:{
+  sounds: {
     start: "../media/start.wav",
     shoot: "../media/shoot.wav",
     gameOver: "../media/gameOver.wav",
@@ -100,7 +100,7 @@ var Settings = {
     hit: "../media/hit.mp3",
     music: "../media/music.mp3"
   },
-  debug:{
+  debug: {
     interacions: false
   }
 }
